@@ -1,4 +1,7 @@
 // requirements for express setup
+
+import { Server } from "http";
+
 // Express.js, MySQL, and database connection
 let express = require("express"); 
 let mysql = require("mysql");
@@ -29,6 +32,18 @@ app.get("/", function(request, response) {
       `<li>${post.title}</li>`
     }).join('')}</body></html>
   `;
+  let query = `
+    SELECT * 
+    FROM 'posts'
+    ORDER BY date 
+    DESC LIMIT 10;
+  `;
+
+  connection.query(query, function(err, posts) {
+    if (err) throw err;
+  });
 
   response.send(html);
 });
+
+app.listen(3000);
