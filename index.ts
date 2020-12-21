@@ -1,7 +1,3 @@
-// requirements for express setup
-
-import { Server } from "http";
-
 // Express.js, MySQL, and database connection
 let express = require("express"); 
 let mysql = require("mysql");
